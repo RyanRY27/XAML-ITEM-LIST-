@@ -1,0 +1,1 @@
+This project is developed and designed on an XS display-sized Android device. The UI might change if you use a small, medium, or large display size. You can change your display size in the settings of your device.
