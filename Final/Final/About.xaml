@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Final"
+             Title="© 2024 Daily Dope Official Store"
+             x:Class="Final.About" 
+             BackgroundColor="Black"> <!-- Entire Page bg color -->
+    <ContentPage.Content>
+        <Grid>
+            <!-- put image if you want for bg -->
+            <Image Source="background_image.png" Aspect="AspectFill" Opacity="0.8"/>
+
+            <!-- change the content>
+            <ScrollView>
+                <StackLayout Padding="30,0">
+                    <Image Source="logo.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,40,0,20"/>
+
+                    <local:JustifiedLabel Text="    Daily Dope Official Store is your one-stop shop for all things vaping. We offer a wide selection of high-quality vape products, including mods, tanks, coils, e-liquids, and accessories. We're passionate about providing our customers with the best possible vaping experience, and we're committed to offering excellent customer service."
+                           TextColor="White" FontSize="25" Margin="0,10,0,10"/>
+
+                    <Label Text="Daily Dope is a registered trademark." 
+                           TextColor="White" FontSize="30" Margin="0,30,0,10" FontAttributes="Bold"/>
+
+                    <local:JustifiedLabel TextColor="White" FontSize="25" Margin="0,0,0,20">
+                        <local:JustifiedLabel.FormattedText>
+                            <FormattedString>
+                                <Span Text="Please note:" FontAttributes="Bold" FontSize="25"/>
+                                <Span Text=" We are a verified vape shop based in the Philippines. Age restrictions apply."/>
+                            </FormattedString>
+                        </local:JustifiedLabel.FormattedText>
+                    </local:JustifiedLabel>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
+                        <Image Source="ph.png" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
+                        <Label Text="Contact Numbers: 09294021353 / 09995041208"
+                               TextColor="White" FontSize="18"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <Image Source="time.png" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
+                        <Label Text="Operating Hours: 9:00 AM - 12:00 AM"
+                               TextColor="White" FontSize="18"/>
+                        <Label Text="Open: MON TO SUN"
+                               TextColor="White" FontSize="18"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <Image Source="pin.png" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
+                        <Label Text="GMAP/WAZE: DAILY DOPEAVENUE LOUNGE"
+                               TextColor="White" FontSize="20"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                        <Image Source="fb.png" WidthRequest="20" HeightRequest="20" Margin="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Image Source="ig.png" WidthRequest="20" HeightRequest="20" Margin="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Image Source="tiktok.png" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="DAILY DOPE_"
+                               TextColor="White" FontSize="20" Margin="0,10,0,20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <Image Source="png.jpg" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,40,0,20"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

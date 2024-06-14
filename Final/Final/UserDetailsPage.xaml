@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Final.UserDetailsPage"
+             BackgroundColor="Transparent">
+    <ContentPage.Content>
+        <Grid x:Name="OverlayGrid" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Opacity="0">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped"/>
+            </Grid.GestureRecognizers>
+            <!-- change the modal color -->
+            <Frame x:Name="ModalFrame" BackgroundColor="Black" Padding="20" CornerRadius="10" 
+                   HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="350" Scale="0.8" Opacity="0">
+                <StackLayout>
+                    <Label Text="Account Profile" FontSize="50" HorizontalOptions="Center" TextColor="WhiteSmoke" Margin="0,0,0,10" FontAttributes="Bold"/>
+                    <Frame WidthRequest="250" HeightRequest="250" CornerRadius="125" 
+                           HorizontalOptions="Center" VerticalOptions="Start" 
+                           Padding="0" IsClippedToBounds="True">
+                        <Image Source="{Binding ProfileImage}" Aspect="AspectFill" />
+                    </Frame>
+                    <Label Text="{Binding Username}" FontSize="50" HorizontalOptions="Center" Margin="0,10,0,0" TextColor="WhiteSmoke"/>
+                    <Label Text="{Binding Email}" FontSize="30" TextColor="WhiteSmoke" Margin="0,5,0,0"/>
+                    <Label Text="{Binding Phone}" FontSize="30" TextColor="WhiteSmoke" Margin="0,5,0,20"/>
+                    <Button Text="Edit Profile" Clicked="OnEditProfileClicked" HorizontalOptions="FillAndExpand" VerticalOptions="End" FontSize="30" CornerRadius="10" BackgroundColor="#2E2E2E" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

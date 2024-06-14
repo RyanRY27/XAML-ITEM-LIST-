@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Final.ItemDetailPage"
+             BackgroundColor="Transparent">
+    <ContentPage.Content>
+        <Grid x:Name="OverlayGrid" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Opacity="1">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped" />
+            </Grid.GestureRecognizers>
+            <!-- change the modal color -->
+            <Frame x:Name="ModalFrame" BackgroundColor="Black" Padding="20" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="350" Scale="1" Opacity="1">
+                <StackLayout>
+                    <Label Text="Item Details" FontSize="50" HorizontalOptions="Center" TextColor="WhiteSmoke" Margin="0,0,0,10" FontAttributes="Bold"/>
+                    <Frame WidthRequest="250" HeightRequest="250" 
+                        HorizontalOptions="Center" VerticalOptions="Start" 
+                        Padding="0" IsClippedToBounds="True">
+                        <Image Source="{Binding ItemImage}" Aspect="AspectFill"/>
+                    </Frame>
+                    <Label Text="{Binding ItemName}" FontSize="30" FontAttributes="Bold" TextColor="WhiteSmoke" HorizontalOptions="Center" Margin="0,10,0,10"/>
+                    <Label Text="{Binding ItemDescription, StringFormat='Description: {0}'}" FontSize="30" TextColor="WhiteSmoke" Margin="0,0,0,10"/>
+                    <Label Text="{Binding ItemPrice, StringFormat='Price: {0}'}" FontSize="30" TextColor="WhiteSmoke" Margin="0,0,0,10"/>
+                    <Button Text="Edit" FontSize="20" CornerRadius="10" HorizontalOptions="FillAndExpand" VerticalOptions="End" Clicked="OnEditClicked" BackgroundColor="#2E2E2E" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

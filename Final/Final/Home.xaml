@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Final"
+             xmlns:services="clr-namespace:Final.Services"
+             x:Class="Final.Home"
+             BackgroundColor="Black"> <!-- Entire page bg -->
+    <ContentPage.BindingContext>
+        <local:ItemPageViewModel />
+    </ContentPage.BindingContext>
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" Padding="-20,0,0,0"> <!-- Adjust the widthreq of the searchbar if the profile icon is not showing or adjust it depends on your display size -->
+            <SearchBar Placeholder="Search Items" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="350"
+                       TextChanged="OnSearchBarTextChanged" SearchButtonPressed="OnSearchButtonPressed" PlaceholderColor="White" FontSize="20"/>
+            <ImageButton x:Name="UserImageButton" Source="{Binding Source={x:Static services:UserDetailsService.Instance}, Path=ProfileImage}" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" HeightRequest="40"
+                         BackgroundColor="Transparent" CornerRadius="20" Margin="20,0,0,0" Clicked="OnImageButtonClicked"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ItemTemplate"> <!-- item collection view change it base on your phone display size -->
+                <Frame HasShadow="False" BorderColor="#2E2E2E" BackgroundColor="#2E2E2E" CornerRadius="10" Margin="5" HeightRequest="150" WidthRequest="100">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:Home}}, Path=BindingContext.ItemTappedCommand}" CommandParameter="{Binding .}" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Spacing="6" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                        <Image Source="{Binding ItemImage}" HeightRequest="90" WidthRequest="90" Aspect="AspectFill" Margin="-10,-5,-10,10"/>
+                        <Label Text="{Binding ItemName}" FontSize="20" TextColor="FloralWhite" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ButtonTemplate"> <!-- add item collection view change properties base on your display size -->
+                <Frame HasShadow="False" BorderColor="#2E2E2E" BackgroundColor="#2E2E2E" CornerRadius="10" Margin="5" HeightRequest="100" WidthRequest="100">
+                    <StackLayout Orientation="Vertical" Spacing="6" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                        <ImageButton Source="add.png" Command="{Binding Source={RelativeSource AncestorType={x:Type local:Home}}, Path=BindingContext.AddItemCommand}" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#2E2E2E"/>
+                        <Label Text="Add Item" FontSize="20" TextColor="FloralWhite" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,10,0,0"/>
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+
+            <local:ItemTemplateSelector x:Key="ItemTemplateSelector"
+                                        ItemTemplate="{StaticResource ItemTemplate}"
+                                        ButtonTemplate="{StaticResource ButtonTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="10,20,10,10">
+        <Image Source="putlogo.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0"/> <!-- shop logo or change it to label for shop name -->
+        <Label Text="OFFICIAL STORE" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-20,0,25" FontAttributes="Bold" FontSize="30" TextColor="WhiteSmoke"/>
+        <StackLayout Padding="0,0,0,20">
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView ItemsSource="{Binding FilteredItems}" ItemTemplate="{StaticResource ItemTemplateSelector}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="4" HorizontalItemSpacing="10" VerticalItemSpacing="20" />
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

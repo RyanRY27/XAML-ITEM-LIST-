@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Final"
+             Title="FlyouMenu"
+             x:Class="Final.FlyoutMenuPage"
+             BackgroundColor="#2E2E2E"><!-- flyout menu color  -->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ItemTemplate">
+                <ViewCell>
+                    <StackLayout Padding="15,8,0,10">
+                      
+                        <Grid RowSpacing="50">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="33"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding IconSource}" VerticalOptions="Center" WidthRequest="30" HeightRequest="30"/>
+                            <Label Grid.Column="1" Text="{Binding Title}" VerticalOptions="Center" FontSize="Title"/>
+                          
+                        </Grid>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <local:FlyoutMenuDataTemplateSelector x:Key="FlyoutMenuDataTemplateSelector"
+                                                  ItemTemplate="{StaticResource ItemTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="15,35,0,0">
+      
+        <Grid Padding="0,0,0,40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="menu.png" VerticalOptions="Center" WidthRequest="40" HeightRequest="40"/>
+            <Label Grid.Column="1" Text="MENU" VerticalOptions="CenterAndExpand" FontSize="35" FontAttributes="Bold"/>
+            
+        </Grid>
+
+        <ListView x:Name="listview" x:FieldModifier="public" ItemTemplate="{StaticResource FlyoutMenuDataTemplateSelector}" SeparatorVisibility="None" Margin="10,10,10,10">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutItemPage}">
+                    <local:FlyoutItemPage Title="Home" IconSource="home.png" TargetPage="{x:Type local:Home}"/>
+                    <local:FlyoutItemPage Title="Item List" IconSource="list.png" TargetPage="{x:Type local:ItemPage}"/>
+                    <local:FlyoutItemPage Title="Account Settings" IconSource="account.png" TargetPage="{x:Type local:Account}"/>
+                    <local:FlyoutItemPage Title="About Us" IconSource="about.png" TargetPage="{x:Type local:About}"/>
+                </x:Array>
+            </ListView.ItemsSource>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
